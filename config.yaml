@@ -27,7 +27,7 @@ life_cycle: 'stable'
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/mambelli/git-novice2'
+source: 'https://github.com/mambelli/git-novice'
 
 # Default branch of your lesson
 branch: 'main'
@@ -73,6 +73,8 @@ episodes:
 - 12-citation.md
 - 13-hosting.md
 - 14-supplemental-rstudio.md
+- 15-python-project-and-testing.md
+- 16-collab-branch-and-pr.md
 
 # Information for Learners
 learners: 
