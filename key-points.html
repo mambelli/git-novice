@@ -400,6 +400,30 @@
 </div>
 <!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush16">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading16">
+        <a href="15-python-project-and-testing.html">15. Setting up a Python Project</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush17">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading17">
+        <a href="16-collab-branch-and-pr.html">16. Collaborating - Branching and Pull Requests</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -506,7 +530,8 @@ can include files that would normally be ignored.</li>
 <ul>
 <li>A local Git repository can be connected to one or more remote
 repositories.</li>
-<li>Use the SSH protocol to connect to remote repositories.</li>
+<li>Use OAuth via GitHub CLI or the SSH protocol to connect to remote
+repositories.</li>
 <li>
 <code>git push</code> copies changes from a local repository to a
 remote repository.</li>
@@ -565,6 +590,32 @@ information apply no matter where code and data are hosted.</li>
 <ul>
 <li>Using RStudio’s Git integration allows you to version control a
 project over time.</li>
+</ul></section><section id="15-python-project-and-testing"><h2 class="section-heading"><a href="15-python-project-and-testing.html">Setting up a Python ProjectStructuring a Project<a class="anchor" aria-label="anchor" href="#structuring-a-project"></a>Adding Pre-commit checks<a class="anchor" aria-label="anchor" href="#adding-pre-commit-checks"></a>Licensing compliance<a class="anchor" aria-label="anchor" href="#licensing-compliance"></a>GitHub CI: unit tests and linting<a class="anchor" aria-label="anchor" href="#github-ci-unit-tests-and-linting"></a></a></h2>
+<hr class="half-width">
+<ul>
+<li>While there is often variation, most Python projects follow a
+similar structure for their code</li>
+<li>Doing so is beneficial because it allows components of your code to
+be reused more easily by yourself and others</li>
+<li>Testing can be ‘automatic’ rather than manual. This catches many
+issues before they become a problem - this is continuous integration
+(CI)</li>
+<li>The concepts here can be used for all programming languages - not
+just Python - and are pretty much universally used by professional
+software developers</li>
+</ul></section><section id="16-collab-branch-and-pr"><h2 class="section-heading"><a href="16-collab-branch-and-pr.html">Collaborating - Branching and Pull RequestsForking a repository<a class="anchor" aria-label="anchor" href="#forking-a-repository"></a>Creating a new branch with changes<a class="anchor" aria-label="anchor" href="#creating-a-new-branch-with-changes"></a>Pushing a new branch<a class="anchor" aria-label="anchor" href="#pushing-a-new-branch"></a>Add branch protection rules (requirements) in the base
+repository<a class="anchor" aria-label="anchor" href="#add-branch-protection-rules-requirements-in-the-base-repository"></a>Pull (Merge) Requests<a class="anchor" aria-label="anchor" href="#pull-merge-requests"></a>Keeping up with upstream changes<a class="anchor" aria-label="anchor" href="#keeping-up-with-upstream-changes"></a></a></h2>
+<hr class="half-width">
+<ul>
+<li>
+<code>git checkout -b branchname</code> creates a branch where you
+can work on a set of changes</li>
+<li>
+<code>git checkout branchname</code> switches between branches</li>
+<li>Creating pull requests is the way most people work with Git and is
+good practice: it allows for more control</li>
+<li>Before pull requests can be merged, there must be no merge
+conflicts</li>
 </ul></section>
 </div>
     </main>
@@ -578,12 +629,12 @@ project over time.</li>
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
 
-        <a href="https://github.com/swcarpentry/git-novice/edit/main/README.md" class="external-link">Edit on GitHub</a>
+        <a href="https://github.com/mambelli/git-novice/edit/main/README.md" class="external-link">Edit on GitHub</a>
 
 	
-        | <a href="https://github.com/swcarpentry/git-novice/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
-        | <a href="https://github.com/swcarpentry/git-novice/" class="external-link">Source</a></p>
-				<p><a href="https://github.com/swcarpentry/git-novice/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:team@carpentries.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
+        | <a href="https://github.com/mambelli/git-novice/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
+        | <a href="https://github.com/mambelli/git-novice/" class="external-link">Source</a></p>
+				<p><a href="https://github.com/mambelli/git-novice/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:marcom@fnal.gov">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
 			<div class="col-md-6">
 
@@ -613,8 +664,8 @@ project over time.</li>
   "url": "https://swcarpentry.github.io/git-novice/key-points.html",
   "identifier": "https://swcarpentry.github.io/git-novice/key-points.html",
   "dateCreated": "2014-12-04",
-  "dateModified": "2025-05-20",
-  "datePublished": "2025-05-20"
+  "dateModified": "2025-05-26",
+  "datePublished": "2025-05-26"
 }
 
   </script><script>
