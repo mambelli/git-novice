@@ -3,6 +3,10 @@
 
 # git-novice
 
+This is an extended version maintained by [Marco Mambelli](https://github.com/mambelli/) of the original Software Carpentry tutorial. 
+Please see [https://mambelli.github.io/git-novice/](https://mambelli.github.io/git-novice/) for a rendered version of this extended version.
+Below is the original README.
+
 An introduction to version control for novices using Git.
 Please see [https://swcarpentry.github.io/git-novice/](https://swcarpentry.github.io/git-novice/) for a rendered version of this material,
 or [the lesson template documentation][lesson-example] for instructions on formatting, building, and submitting material.
