@@ -8,7 +8,7 @@ exercises: 0
 
 - Make our repository follow a 'standard' Python project format
 - Add a test and testing framework
-- Run the tests and a linter on GitLab - using a branch and a Pull Request
+- Run the tests and a linter on GitHub - using a branch and a Pull Request
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -19,106 +19,125 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-# Structuring a Project
+## 1\. Structuring a Project
 
-Vlad and Wolfsman are still investigating how to send a planetary lander to Mars and other planets or moons. 
-They need to start crunching numbers and they decided to start a Python project.
+Alfredo would like to exchange recipes with his friends in Europe. They measure everything in grams and do not understand imperial measures.
+So he decided to start a Python project to automate the conversion for the ingredients' quantities.
 
-![](fig/planetsmath.png){alt='planetsmath'}
-[Mars](https://en.wikipedia.org/wiki/File:OSIRIS_Mars_true_color.jpg) by European Space Agency /
-[CC-BY-SA 3.0 IGO](https://creativecommons.org/licenses/by/3.0/deed.en).
-[Pluto](https://commons.wikimedia.org/wiki/File:PIA19873-Pluto-NewHorizons-FlyingPastImage-20150714-transparent.png) /
-Courtesy NASA/JPL-Caltech.
-[Moon](https://commons.wikimedia.org/wiki/File:Lune_ico.png)
-&copy; Luc Viatour / [https://lucnix.be](https://lucnix.be/) /
-[CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en).
-[Spacecraft](https://www.kissclipart.com/rocket-ship-no-background-clipart-spacecraft-rocke-gwjlam/)
-[CC 0](https://creativecommons.org/publicdomain/zero/1.0/).
+![](fig/unitconversions.png){alt='measure conversions'}
+Measure conversions, generated using ChatGPT.
 
 Most Python projects are structured in a similar way. There are very good reasons for this - if you follow the 'standard', other people who approach your code will recognise parts of it and will know by default how to install your code, run any tests that might exist, and where to look for source code or to change things like the dependencies that are required.
  
-The following is a simple Python project with a typical structure (the `.git` directory is omitted):
+The following is a simple Python project with a typical structure (the `.git` and some cache directories are omitted):
 
 ```output
-planetsmath/
-├── DEVELOPMENT.md
+unitconverter/
+├── .codespell
+│   ├── ignore_lines.txt
+│   └── ignore_words.txt
 ├── .editorconfig
 ├── .github
 │   └── workflows
 │       ├── linters.yaml
 │       └── pytest.yaml
 ├── .gitignore
-├── LICENSES
-│   └── Apache-2.0.txt
-├── LICENSE.txt
 ├── .pre-commit-config.yaml
 ├── .pylintrc
-├── README.md
-├── requirements.txt
 ├── .reuse
-│   ├── dep5
 │   └── templates
 │       └── compact.jinja2
+├── DEVELOPMENT.md
+├── LICENSE.txt
+├── LICENSES
+│   └── Apache-2.0.txt
+├── README.md
+├── REUSE.toml
+├── pyproject.toml
+├── requirements.txt
 ├── setup.py
-└── src
-    └── planetsmath
-        ├── functions.py
-        ├── __init__.py
-        └── test_functions.py
+├── src
+│   └── unitconverter
+│       ├── __init__.py
+│       ├── functions.py
+│       └── test_functions.py
+└── uv.lock
+
+# tree -a -I .git -I .ruff_cache -I .pytest_cache -I recipe_unitconverter.egg-info -I dist -I .mypy_cache -I __pycache__ unitconverter/
 ```
 
-You can see this sample project [here](https://github.com/mambelli/planetsmath) and clone it with (assumin you use CLI and HTTPS):
+You can see [this sample project](https://github.com/mambelli/unitconverter) and clone it with (assuming you use CLI and HTTPS):
 
 ```bash
-$ git clone https://github.com/mambelli/planetsmath.git
+$ git clone https://github.com/mambelli/unitconverter.git
 ```
 
- If using SSH:
+If using SSH, you can clone it with:
 
 ```bash
-$ git clone git@github.com:mambelli/planetsmath.git
+$ git clone git@github.com:mambelli/unitconverter.git
 
 ```
 
 We'll talk of these folders/files one at a time:
 
-## src/
+### src/
 
 The source tree where all the Python files reside.
 
-## planetsmath/
+### unitconverter/
 
-Inside the project source tree we normally have a folder which matches the name of the Python module. This is done so that from the src directory, the code within the module can be imported with:
+Inside the project source tree we normally have a folder which matches the name of the Python package. This is done so that from the src directory, the code within the package can be imported with:
 
 ```python
-import planetsmath
+import unitconverter
 ```
 
 You can see this for e.g. in the source repository of the [NumPy library](https://github.com/numpy/numpy).
 
-Within this folder, we can store code files (e.g. functions.py) and further subdirectories. These will then be importable too.
+Within this folder, we can store code files (e.g. functions.py) and further subdirectories (sub-packages). These will then be importable too.
 
-### functions.py
+#### functions.py
 
-This is just a standard Python file with methods in it. You can have as many of these as you like, but generally people organise them around what the code is doing. So for e.g if you have a few methods that deal with I/O, you might create a file called `io.py` and put all of those methods there. Organising your code across multiple files like this is a very good idea - it makes it easier to find things.
+This is a module, just a standard Python file with classes and functions in it. You can have as many of these as you like, but generally people organise them around what the code is doing. So for e.g if you have a few methods that deal with I/O, you might create a file called `io.py` and put all of those methods there. Organising your code across multiple files like this is a very good idea - it makes it easier to find things.
 
-### `__init__.py`
+#### `__init__.py`
 
-The `__init__.py` file is effectively as set of instructions that get run when you import a Python module. So with a blank `__init__.py`, nothing happens if you run `import planetsmath` in a Python session. If you want to use methods from the functions.py file. What is common is to import certain methods into the top level of the module, for e.g.:
+The `__init__.py` file is effectively as set of instructions that get run when you import a Python package. So with a blank `__init__.py`, nothing happens if you run `import unitconverter` in a Python session. If you want to use methods from the functions.py file. What is common is to import certain methods into the top level of the module, for e.g.:
 
 ```python
-from .functions import sum_function
+from .functions import convert_imperial
 ```
 
 Then, in a Python session, you would be able to do the following:
 
 ```python
->>> import planetsmath
->>> planetsmath.sum_function([1, 2, 3, 4])
-10
+>>> import unitconverter
+>>> unitconverter.convert_imperial("3 oz")
+85.0485 gr
 ```
 
-## setup.py
+### pyproject.toml
+
+A ['pyproject.toml'](<https://packaging.python.org/en/latest/specifications/pyproject-toml/) file acts as a configuration file for packaging-related and other tools as specified in
+[PEP 518](https://peps.python.org/pep-0518/) and [PEP 621](https://peps.python.org/pep-0621/).
+
+A 'pyproject.toml' file is subdivided in sections separated by square brackets labels, called tables.
+
+The `[build-system]` table declares any Python level dependencies that must be installed in order to run the project’s build system successfully and must have at least the `requires` attribute.
+
+The `[project]` table specifies the project’s core metadata, like the name, version, and authors. Note how the project name, used in the `pip` installation, may be different from the package name, used in the Python import statement.
+If [project] is missing, the build backend will provide all the information, at least name and version. This may come from other files like 'setup.py'.
+
+The `[tool]` table (and `[tool.NAME]` sub-tables) is where any other tool related to your Python project can have users specify configuration data, e.g. the black formatting tool would store its configuration in [tool.black].
+
+### Legacy specifications of packages and requirements
+
+It may be convenient to add legacy project specifications. 
+They contain redundant information, already in 'pyproject.toml'.
+But other peoples using your project may not be familiar with 'pyproject.toml' or older versions of Python may not support all its features. 
+
+#### setup.py
 
 A setup.py file is just a list of instructions for Python that tell it how to install your package, and what it's made up of. There are a myriad of options, but a very simple one for this project could be:
 
@@ -126,58 +145,77 @@ A setup.py file is just a list of instructions for Python that tell it how to in
 from setuptools import setup
 
 setup(
-        name='planets',
-        version='0.0.1',
-        packages=['planetsmath'],
-        install_requires=[
-            'numpy',
-        ],
+    name="recipe-unitconverter",
+    version="0.0.1",
+    packages=["src/unitconverter"],
+    install_requires=[
+        "numpy",
+    ],
 )
 ```
 
-Notice that there is a section called 'install_requires'. This isn't required for our package, as we're not using NumPy, but it is very common to see a list of external packages here. On install with pip, Python will check to see if it can import 'numpy' and 'matplotlib'. If it can't, the installation will fail.
+Notice that there is a section called `install_requires`. It is a list of external packages used in the project. On install with pip, Python will make sure that 'numpy' is installed if not already available. If it can't, the installation will fail.
 
-## requirements.txt
+#### requirements.txt
 
 This is just a text file where you can put any dependencies your package needs to work. If necessary, you can constrain some of your package dependencies to specific versions, for e.g.:
 
 ```output
 pytest
-numpy>=1.21.4
+numpy>=2.0.2
 ```
 
 To install all of the dependencies, you can run `pip install -r requirements.txt`. This is well known by most people working with Python. Generally you should try to install things via pip like this, and not via Anaconda (unless you have no choice). This is because Anaconda is less portable:
-- Is not usable by commercial organisations without a paid for license. This matters if you have external companies as collaborators
+- Introduces non-Python libraries that mayinterfere with other tools like SSH
+- Is not usable by commercial organisations without a paid for license. This matters if you have external companies as collaborators ([conda-forge](https://github.com/conda-forge) and [miniforge](https://github.com/conda-forge/miniforge) are an open-source version of Anaconda)
 - Was introduced mainly for distributing compiled dependencies. This is now well handled by pip with the introduction of `wheels`
 - Anaconda is not usable or is heavily discouraged on many HPC clusters.
 
-## README.md
+### uv.lock (and pylock.toml)
 
-This file offers general information about the project. It is the one displayed by GitHub at the end of the code page.
+A lock file allows to reproduce the installation of a Python project, with the exact same sets of dependencies, from system to system.
+
+For this project I'm using `uv.lock`, the one provided by the [uv](https://github.com/astral-sh/uv) tool. 
+There is a Python standard ([pylock.toml](https://packaging.python.org/en/latest/specifications/pylock-toml/) for a lock file, but it is fairly recent and not as complete.
+You can install uv and generate the lock file with:
+
+```bash
+$ pip install uv
+$ uv lock
+```
+
+uv is a very nice tool to manage all your project needs: from initializing the project, to managing the environment, to building and releasing it. 
+This is beyond the scope of this introduction, but you can find more on the [uv project guide](https://docs.astral.sh/uv/guides/projects/).
+
+
+### README.md
+
+This file offers general information about the project. It is the one displayed by GitHub at the end of the main code page.
 It is possible to add badges with the status of the CI tests.
 
-## Other files
+### Other files
 
-- `DEVELOPMENT.md`: instructions for collaborators and your future self.
-- `LICENSE.txt` (and `.reuse` and `LICENSES`): it's the common place for your project's license, seen also in the [licensing episode](11-licensing.md), very important when making your code public.
+- `DEVELOPMENT.md`: development instructions for collaborators and your future self.
+- `LICENSE.txt` (and `REUSE.toml`, `.reuse` and `LICENSES`): it's the common place for your project's license, seen also in the [licensing episode](11-licensing.md), very important when making your code public.
   See the [Licensing compliance section](# Licensing compliance) below for a complete licensing solution : reuse can establish and verify licensing complaiance.
-- `src/planetsmath/test_functions.py`: unit tests for `functions.py`, see the (testing section)[# GitHub CI: unit tests and linting] below.
+- `src/unitconverter/test_functions.py`: unit tests for `functions.py`, see the [testing section](# GitHub CI: unit tests and linting) below.
 
 Hidden files, visible with `ls -a`:
 - `.editorconfig`: joint comfiguration recognized by many different editors
 - `.git` and `.gitignore`: Git internal files, seen in the [Creating a repository](03-create.md) and [Ignoring Things](06-ignore.md) episodes respectively
-- `.github` directory: contains GitHub automation files, see the [testing and GitHub CI section](# GitHub CI: unit tests and linting) below.
+- `.github` directory: contains GitHub automation files, see the [Testing and GitHub CI section](# GitHub CI: unit tests and linting) below.
 - `.pre-commit-config.yaml`: pre-commit configuration file, see the [next section](# Adding Pre-commit checks).
-- `.pylintrc`: configuration file of pylint, a python linter
+- `.pylintrc`: configuration file of pylint, a Python linter
 
 
-# Adding Pre-commit checks
+## 2\. Adding Pre-commit checks
 
 It is possible to run some checks before each commit command, taking advantage of the hooks mechanism in Git.
-A pre-commit will guarantee that committed code always follows the desired standard.
+A pre-commit will guarantee that committed code always follows the desired standard. 
 To start using pre-commit you have to add a pre-commit config file and to install pre-commit.
 
-Add a pre-commit config file named `.pre-commit-config.yaml` with the following content for an initial set of checks:
+Add a pre-commit config file named `.pre-commit-config.yaml` with the following content for an initial set of checks (some lines redacted for clarity, the full version is on the repo).
+This configuration runs some basic file checks and more elaborate linters ([Black](https://github.com/psf/black), [Ruff](https://docs.astral.sh/ruff/), [mypy](https://mypy-lang.org/), [REUSE](https://reuse.software/)):
 
 ```yaml
 # For more information see
@@ -188,7 +226,7 @@ default_language_version:
   python: python3
 repos:
   - repo: "https://github.com/pre-commit/pre-commit-hooks"
-    rev: v4.1.0
+    rev: v5.0.0
     hooks:
       - id: check-ast
       - id: check-docstring-first
@@ -202,36 +240,73 @@ repos:
         args:
           - "--markdown-linebreak-ext=md"
   - repo: "https://github.com/pre-commit/pygrep-hooks"
-    rev: v1.9.0
+    rev: v1.10.0
     hooks:
       - id: python-check-blanket-noqa
       - id: python-check-blanket-type-ignore
       - id: python-use-type-annotations
   - repo: "https://github.com/pycqa/isort"
-    rev: 5.10.1
+    rev: 6.0.1
     hooks:
       - id: isort
   - repo: "https://github.com/psf/black"
-    rev: 22.3.0
+    rev: 25.1.0
     hooks:
       - id: black
   - repo: "https://github.com/pre-commit/mirrors-prettier"
-    rev: v2.6.2
+    rev: v3.1.0
     hooks:
       - id: prettier
+        # HTML pre section bug https://github.com/prettier/prettier/issues/17042
+        exclude: "doc/factory/troubleshooting.html"
         exclude_types:
           - "python"
         additional_dependencies:
           - "prettier"
           - "prettier-plugin-toml@0.3.1"
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.11.11
+    hooks:
+      # Run the linter.
+      - id: ruff
+        #  No auto-fix
+        # args: [ --fix ]
+      # Don't Run the formatter.
+      # - id: ruff-format
   - repo: "https://github.com/asottile/pyupgrade"
-    rev: v2.31.0
+    rev: v3.20.0
+    # rev: e695ecd365119ab4e5463f6e49bea5f4b7ca786b
+    # lock to v2.31.0 (must specify the git hash), v2.32.0 requires python >= 3.7
     hooks:
       - id: pyupgrade
+        exclude: "^skip/this/file.py$"
+        # needs to be py3.6 compatible
         args:
           - "--py36-plus"
-  - repo: "https://github.com/fsfe/reuse-tool"
-    rev: v0.14.0
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.16.0
+    hooks:
+      - id: mypy
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.4
+    hooks:
+      - id: codespell
+        args: [
+            # Pass skip configuration as command line arguments rather than in the
+            # config file because neither cfg nor TOML support splitting this argument
+            # across multiple lines.
+            # Globs must match the Python `glob` module's format:
+            # https://docs.python.org/3/library/glob.html#module-glob
+            "-S",
+            ".codespell/ignore_words.txt",
+            # Write changes in place
+            "-w",
+          ]
+        additional_dependencies:
+          - tomli
+  - repo: https://github.com/fsfe/reuse-tool
+    rev: v5.0.2
     hooks:
       - id: reuse
         additional_dependencies:
@@ -256,55 +331,52 @@ pre-commit run --all-files
 ```
 
 
-# Licensing compliance
+## 3\. Licensing compliance
 
-Planets Math is released under the Apache 2.0 license and license compliance is
-handled with the [REUSE](http://reuse.software/) tool.
+The Recipe Units Converter is released under the Apache 2.0 license and license compliance is
+handled with the [REUSE](https://reuse.software/) tool.
 REUSE is installed as development dependency or you can install it manually
 (`pip install reuse`). All files should have a license notice:
 
 - to check compliance you can use `reuse lint`. This is the command run also by the pre-commit and CI checks
 - you can add on top of new files [SPDX license notices](https://spdx.org/licenses/) like
   ```
-  # SPDX-FileCopyrightText: 2022 Fermi Research Alliance, LLC
+  # SPDX-FileCopyrightText: 2025 Alfredo Linguini
   # SPDX-License-Identifier: Apache-2.0
   ```
 - or let REUSE do that for you (`FILEPATH` is your new file):
   ```bash
-  reuse addheader --year 2023 --copyright="Fermi Research Alliance, LLC" \
+  reuse addheader --year 2025 --copyright="Alfredo Linguini" \
     --license="Apache-2.0" --template=compact FILEPATH
   ```
 - Files that are not supported and have no comments to add the SPDX notice
-  can be added to the `.reuse/dep5` file
-- New licenses can be added to the project using `reuse download LCENSEID`. Please
+  can be added to the `REUSE.toml` file. REUSE does not support pyproject.toml yet.
+- New licenses can be added to the project using `reuse download LCENSEID`. If you are contributing to a project, please
   contact project management if this is needed.
 
 
-# GitHub CI: unit tests and linting
+## 4\. GitHub CI: unit tests and linting
 
-First, we'll introduce a new file. In the `src/planetsmath` subdirectory, in a file called `test_functions.py` we can write any tests of methods in `functions.py`. 
-The library `pytest` is commonly used for unit tests like this. Pytest can pick up tests written in the following way:
+First, we'll introduce a new file. In the `src/unitconverter` subdirectory, in a file called `test_functions.py` we can write any tests of methods in `functions.py`. 
+The library `pytest` is commonly used for unit tests like this. Pytest looks for files named `*_test.py` or `test_*.py` and can pick up tests written in the following way:
 
 ```python
-from .functions import sum_function
+from .functions import convert_imperial
 
-def test_sum_function():
-    assert sum_function([1, 2, 3, 4, 5]) == 15.0
-    assert sum_function([1, 2.2, 3, 4, 5]) == 15.2
-    assert sum_function([-1, 2, 3, 4, 5]) == 13
+def test_convert_imperial():
+    assert convert_imperial("34 liters") == "34.0 liters"
+    assert convert_imperial("1 lb") == "453.592 grams"
+    assert convert_imperial("2 ounces") == "56.699 grams"
 ```
 
-Note that both the file name and the method inside have the same name of the module and function they wasnt to test, but are preceded with `test_` - this is compulsory!
+Note that both the file name and the method inside have the same name of the module and function they want to test, but are preceded with `test_` - this is compulsory!
 
 With this, when pytest is installed, you can run 'py.test -v' at the command line, and all of your tests will run. 
-With unit tests like this, you can check your code for correctness.
+With [unit tests](https://en.wikipedia.org/wiki/Unit_testing) like this, you can check each component of your code for correctness every time you make changes.
 
 Next, create a file called `.github/workflows/pytest.yaml` with the following content:
 
 ```yaml
-# SPDX-FileCopyrightText: 2022 Fermi Research Alliance, LLC
-# SPDX-License-Identifier: Apache-2.0
-
 ---
 name: PyTest
 on:
@@ -321,11 +393,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout code tree
-        uses: actions/checkout@v2
-      - name: Set up Python 3.7
-        uses: actions/setup-python@v2
+        uses: actions/checkout@v4
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.7"
+          python-version: "3.9"
           architecture: "x64"
       - name: Install dependencies
         run: |
@@ -340,13 +412,13 @@ jobs:
 
 This is a basic recipe that will allow your tests to run on GitHub. Add both of these files to your staging area and commit them, and then push to GitHub.
 
-The `planetsmath` example includes a second CI configuration file, to run common Python linters.
+The `unitconverter` example includes a second CI configuration file, to run common Python linters.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - While there is often variation, most Python projects follow a similar structure for their code
 - Doing so is beneficial because it allows components of your code to be reused more easily by yourself and others
-- Testing can be 'automatic' rather than manual. This catches many issues before they become a problem - this is continuous integration
+- Testing can be 'automatic' rather than manual. This catches many issues before they become a problem - this is continuous integration (CI)
 - The concepts here can be used for all programming languages - not just Python - and are pretty much universally used by professional software developers
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

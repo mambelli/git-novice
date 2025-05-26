@@ -168,6 +168,13 @@ And if necessary, change your configuration using the
 same commands to choose another editor or update your email address.
 This can be done as many times as you want.
 
+After creating a repository in the next sections you will have both global and local configurations.
+To view all attributes and where they are defined you can use:
+
+```bash
+$ git config --list --show-origin --show-scope
+```
+
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Proxy

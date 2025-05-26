@@ -311,7 +311,7 @@ Python is a very common language.
 This episode gives an example and it is functional to see some additional
 capabilities of Git and GitHub like the ability to run pre-commit scripts,
 an example of Git hooks, and GitHub actions and workflows.
-It is functional alsso to the next episode, since the workflows will be
+It is functional also to the next episode, since the workflows will be
 used to test Pull Requests before proceeding with merges.
 
 ## [Collaborating - Branching and Pull Requests](../episodes/16-collab-branch-and-pr.md)
@@ -319,16 +319,18 @@ used to test Pull Requests before proceeding with merges.
 This is the most common way of collaborating on GitHub and for big projects on Git.
 It gives more control to the project owners and allos to review and discuss changes.
 
-This episode could be rewritten using the original planets project and moved up.
-This would make it more similar to the earlier episodes but would loose the
+This episode uses the original recipes project but could be using also the
+unitconversion repository.
+The first would make it more similar to the earlier episodes but would loose the
 ability to see the code testing workflows used to validate the Python code 
 in action. 
 
 Before starting prepare your own origin repository, a copy of the
-https://github.com/mambelli/planetsmath repository done either via fork
+https://github.com/mambelli/recipes or 
+https://github.com/mambelli/unitconverter repository done either via fork
 or by cloning and saving as a new repository.
 This will be the repository that others in the class will fork from, 
-the URL you'll have to communicate to the class (instead of vlad's one).
+the URL you'll have to communicate to the class (instead of Alfredo's one).
 
 The other teaching observations are similar to the Collaborating episode. 
 Instead of a "shared repository" think of a "shared fork".
@@ -357,7 +359,8 @@ Instead of a "shared repository" think of a "shared fork".
 
 - If you don't have two projectors, have two instructors at the front of the
   room.  Each instructor does their piece of the collaboration demonstration
-  on their own computer and then passes the projector cord back and forth
+  on their own computer and then passes the projector cord (or screen share)
+  back and forth
   with the other instructor when it's time for them to do the other part of
   the collaborative workflow.  It takes less than 10 seconds for each
   switchover, so it doesn't interrupt the flow of the lesson.
@@ -370,7 +373,7 @@ Instead of a "shared repository" think of a "shared fork".
   one is your collaboration, the other your private copy:
 
   ```bash
-  $ git clone https://github.com/vlad/planetsmath.git planetsmath-collaboration
+  $ git clone https://github.com/alflin/unitconverter.git unitconverter-collaboration
   ```
 
 - An interesting role play is sending on purpose a PR with something wrong and
