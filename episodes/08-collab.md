@@ -52,7 +52,13 @@ The Collaborator doesn't want to overwrite her own version of `recipes.git`, so
 needs to clone the Owner's repository to a different location than her own
 repository with the same name.
 
-To clone the Owner's repo into her `Desktop` folder, the Collaborator enters:
+To clone the Owner's repo into her `Desktop` folder, the Collaborator enters if using HTTPS:
+
+```bash
+$ git clone  https://github.com/alflin/recipes.git ~/Desktop/alflin-recipes
+```
+
+And if using SSH:
 
 ```bash
 $ git clone git@github.com:alflin/recipes.git ~/Desktop/alflin-recipes
