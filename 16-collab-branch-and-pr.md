@@ -29,7 +29,7 @@ Frequently you may not have write access to a Git repository or we may want to h
 So we create our own personal copy of the repository, linked to the original one.
 This is called a 'forked' repository, frequently but not always it has the same name of the original repository.
 
-To create a fork go on GitHub to the page of the repository you'd like to fork, e.g. `https://github.com/alflin/recipes`, then click on the 'fork' button, close to the top roght of the windows:
+To create a fork go on GitHub to the page of the repository you'd like to fork, e.g. `https://github.com/alflin/recipes`, then click on the 'fork' button, close to the top right of the window:
 ![](fig/github-fork.png){alt='Fork a repository'}
 
 A new page will let you choose the details of the fork:
@@ -37,7 +37,7 @@ A new page will let you choose the details of the fork:
 - the name of the repository, by default the same as the forked repository (unless there is a conflict in your space)
 ![](fig/github-fork-details.png){alt='Fork windows'}
 
-Let's say you are Tony Tagliatella, 'tontag' on github, and forked the repository maintaining the name ('recipes').
+Let's say you are Tony Tagliatella, 'tontag' on GitHub, and forked the repository maintaining the name ('recipes').
 Now you can clone your personal copy (assuming you use CLI and HTTPS):
 
 ```bash
@@ -143,20 +143,19 @@ This message just means that the remote doesn't have a branch *linked to* add-ta
 $ git push --set-upstream origin add-tagliatelle-butter-sage
 ```
 ```output
-Enumerating objects: 9, done.
-Counting objects: 100% (9/9), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (5/5), 460 bytes | 460.00 KiB/s, done.
-Total 5 (delta 3), reused 0 (delta 0), pack-reused 0
-remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 481 bytes | 481.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
 remote:
 remote: Create a pull request for 'add-tagliatelle-butter-sage' on GitHub by visiting:
 remote:      https://github.com/tontag/recipes/pull/new/add-tagliatelle-butter-sage
 remote:
 To https://github.com/tontag/recipes.git
  * [new branch]      add-tagliatelle-butter-sage -> add-tagliatelle-butter-sage
-Branch 'add-tagliatelle-butter-sage' set up to track remote branch 'add-tagliatelle-butter-sage' from 'origin'.
+branch 'add-tagliatelle-butter-sage' set up to track 'origin/add-tagliatelle-butter-sage'.
 ```
 
 This slightly convoluted message tells us that:
