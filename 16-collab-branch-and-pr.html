@@ -682,11 +682,12 @@ menu: <img src="fig/github-switch-branch.png" alt="Switch branch" class="figure"
 <h3 class="callout-title">Add branch protection rules (requirements) in the base repository</h3>
 <div class="callout-content">
 <p>To avoid undesired changes in the base repository usually
-administrators will add restrictions, e.g.: - Block regular merges (not
-using a pull request) - Require at least one review before a Pull
-Request can be merged - Require automated CI tests () to pass before
-merging</p>
-<p>To set these requirements go to the original repository, the
+administrators will add restrictions, e.g.:</p>
+<ul><li>Block regular merges (not using a pull request)</li>
+<li>Require at least one review before a Pull Request can be merged</li>
+<li>Require to pass <a href="15-python-project-and-testing.html#github-ci-unit-tests-and-linting">automated
+CI tests</a> to pass before merging</li>
+</ul><p>To set these requirements go to the original repository, the
 “Owner”’s one, and in the “Settings” tab (the last on the right) select
 “Branches” from the menu on the left and under “Branch protection rules”
 you can press “Add rule” to add a new one or you can edit existing ones.
