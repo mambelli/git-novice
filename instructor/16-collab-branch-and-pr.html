@@ -762,6 +762,70 @@ your contributions in separate feature branches.</p>
 <p>Alternatively, you cn manage both your fork and the upstream repo as
 remotes in a local clone and manually pull and rebase as desired. This
 gives you more control but may be more complex.</p>
+<div id="switch-roles-and-repeat" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="switch-roles-and-repeat" class="callout-inner">
+<h3 class="callout-title">Switch Roles and Repeat</h3>
+<div class="callout-content">
+<p>Switch roles and repeat the whole process.</p>
+</div>
+</div>
+</div>
+<div id="review-upstream-changes" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="review-upstream-changes" class="callout-inner">
+<h3 class="callout-title">Review Upstream Changes</h3>
+<div class="callout-content">
+<p>The Owner pushed commits to the repository without giving any
+information to the Collaborator. How can the Collaborator find out what
+has changed with command line? And on GitHub?</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
+<p>On the command line, the Collaborator can use
+<code>git fetch upstream main</code> to get the remote changes into the
+local repository, but without merging them. Then by running
+<code>git diff main upstream/main</code> the Collaborator will see the
+changes output in the terminal.</p>
+<p>On GitHub, the Collaborator can go to the repository and click on the
+little triangle next to the “Sync fork” button to see if there have been
+updates in the upstream repository. Clicking on the upstream repository
+name after “forked from” under the repository name will send you to the
+upstream repository where you can check recent commits.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="comment-changes-in-github" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="comment-changes-in-github" class="callout-inner">
+<h3 class="callout-title">Comment Changes in GitHub</h3>
+<div class="callout-content">
+<p>The Owner has some questions about one line change made by the
+Collaborator and has some suggestions to propose.</p>
+<p>With GitHub Pull Requests, it is possible to add general comments in
+the “Conversation” tab of the pull request, and code specific comments
+on the diff in the “Files changed” tab. Over the line of code to
+comment, a blue comment icon appears to open a comment window.</p>
+<p>The Owner posts her comments and suggestions using the GitHub
+interface. The Owner can approve the changes proposed in the PR or can
+request code changes.</p>
+</div>
+</div>
+</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
