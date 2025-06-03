@@ -206,9 +206,10 @@ On GitHub, you can switch branches by using the little drop down menu:
 ## Add branch protection rules (requirements) in the base repository
 
 To avoid undesired changes in the base repository usually administrators will add restrictions, e.g.:
+
 - Block regular merges (not using a pull request)
 - Require at least one review before a Pull Request can be merged
-- Require automated CI tests () to pass before merging
+- Require to pass [automated CI tests](15-python-project-and-testing.md#github-ci-unit-tests-and-linting) to pass before merging
 
 To set these requirements go to the original repository, the "Owner"'s one, and in the "Settings" tab (the last on the right) select "Branches" from the menu on the left and under "Branch protection rules" you can press "Add rule" to add a new one or you can edit existing ones. Either ways you can click on the restrictions you'd like to enable.
 
