@@ -322,12 +322,19 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         15. Setting up a Python Project
         </span>
-      
+      </button>
     </div><!--/div.accordion-header-->
+
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+      <div class="accordion-body">
+        <ul><li><a href="#structuring-a-project">1. Structuring a Project</a></li>
+        </ul></div><!--/div.accordion-body-->
+    </div><!--/div.accordion-collapse-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -436,9 +443,8 @@ Request</li>
 </div>
 </div>
 </div>
-<div class="section level1">
-<h1 id="structuring-a-project">Structuring a Project<a class="anchor" aria-label="anchor" href="#structuring-a-project"></a></h1>
-<p>Alfredo would like to exchange recipes with his friends in Europe.
+<section><h2 class="section-heading" id="structuring-a-project">1. Structuring a Project<a class="anchor" aria-label="anchor" href="#structuring-a-project"></a></h2>
+<hr class="half-width"><p>Alfredo would like to exchange recipes with his friends in Europe.
 They measure everything in grams and do not understand imperial
 measures. So he decided to start a Python project to automate the
 conversion for the ingredients’ quantities.</p>
@@ -488,26 +494,27 @@ required.</p>
 
 # tree -a -I .git -I .ruff_cache -I .pytest_cache -I recipe_unitconverter.egg-info -I dist -I .mypy_cache -I __pycache__ unitconverter/</code></pre>
 </div>
-<p>You can see this sample project <a href="https://github.com/mambelli/unitconverter" class="external-link">here</a> and clone it
-with (assuming you use CLI and HTTPS):</p>
+<p>You can see <a href="https://github.com/mambelli/unitconverter" class="external-link">this
+sample project</a> and clone it with (assuming you use CLI and
+HTTPS):</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> git clone https://github.com/mambelli/unitconverter.git</span></code></pre>
 </div>
-<p>If using SSH:</p>
+<p>If using SSH, you can clone it with:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">$</span> git clone git@github.com:mambelli/unitconverter.git</span></code></pre>
 </div>
 <p>We’ll talk of these folders/files one at a time:</p>
-<div class="section level2">
-<h2 id="src">src/<a class="anchor" aria-label="anchor" href="#src"></a></h2>
+<div class="section level3">
+<h3 id="src">src/<a class="anchor" aria-label="anchor" href="#src"></a></h3>
 <p>The source tree where all the Python files reside.</p>
 </div>
-<div class="section level2">
-<h2 id="unitconverter">unitconverter/<a class="anchor" aria-label="anchor" href="#unitconverter"></a></h2>
+<div class="section level3">
+<h3 id="unitconverter">unitconverter/<a class="anchor" aria-label="anchor" href="#unitconverter"></a></h3>
 <p>Inside the project source tree we normally have a folder which
 matches the name of the Python package. This is done so that from the
 src directory, the code within the package can be imported with:</p>
@@ -520,8 +527,8 @@ src directory, the code within the package can be imported with:</p>
 <p>Within this folder, we can store code files (e.g. functions.py) and
 further subdirectories (sub-packages). These will then be importable
 too.</p>
-<div class="section level3">
-<h3 id="functions-py">functions.py<a class="anchor" aria-label="anchor" href="#functions-py"></a></h3>
+<div class="section level4">
+<h4 id="functions-py">functions.py<a class="anchor" aria-label="anchor" href="#functions-py"></a></h4>
 <p>This is a module, just a standard Python file with classes and
 functions in it. You can have as many of these as you like, but
 generally people organise them around what the code is doing. So for e.g
@@ -530,8 +537,8 @@ called <code>io.py</code> and put all of those methods there. Organising
 your code across multiple files like this is a very good idea - it makes
 it easier to find things.</p>
 </div>
-<div class="section level3">
-<h3 id="init__-py"><code>__init__.py</code><a class="anchor" aria-label="anchor" href="#init__-py"></a></h3>
+<div class="section level4">
+<h4 id="init__-py"><code>__init__.py</code><a class="anchor" aria-label="anchor" href="#init__-py"></a></h4>
 <p>The <code>__init__.py</code> file is effectively as set of
 instructions that get run when you import a Python package. So with a
 blank <code>__init__.py</code>, nothing happens if you run
@@ -553,8 +560,8 @@ certain methods into the top level of the module, for e.g.:</p>
 </div>
 </div>
 </div>
-<div class="section level2">
-<h2 id="pyproject-toml">pyproject.toml<a class="anchor" aria-label="anchor" href="#pyproject-toml"></a></h2>
+<div class="section level3">
+<h3 id="pyproject-toml">pyproject.toml<a class="anchor" aria-label="anchor" href="#pyproject-toml"></a></h3>
 <p>A <a href="%3Chttps://packaging.python.org/en/latest/specifications/pyproject-toml/" class="external-link">‘pyproject.toml’</a>
 file acts as a configuration file for packaging-related and other tools
 as specified in <a href="https://peps.python.org/pep-0518/" class="external-link">PEP 518</a>
@@ -576,14 +583,14 @@ sub-tables) is where any other tool related to your Python project can
 have users specify configuration data, e.g. the black formatting tool
 would store its configuration in [tool.black].</p>
 </div>
-<div class="section level2">
-<h2 id="legacy-specifications-of-packages-and-requirements">Legacy specifications of packages and requirements<a class="anchor" aria-label="anchor" href="#legacy-specifications-of-packages-and-requirements"></a></h2>
+<div class="section level3">
+<h3 id="legacy-specifications-of-packages-and-requirements">Legacy specifications of packages and requirements<a class="anchor" aria-label="anchor" href="#legacy-specifications-of-packages-and-requirements"></a></h3>
 <p>It may be convenient to add legacy project specifications. They
 contain redundant information, already in ‘pyproject.toml’. But other
 peoples using your project may not be familiar with ‘pyproject.toml’ or
 older versions of Python may not support all its features.</p>
-<div class="section level3">
-<h3 id="setup-py">setup.py<a class="anchor" aria-label="anchor" href="#setup-py"></a></h3>
+<div class="section level4">
+<h4 id="setup-py">setup.py<a class="anchor" aria-label="anchor" href="#setup-py"></a></h4>
 <p>A setup.py file is just a list of instructions for Python that tell
 it how to install your package, and what it’s made up of. There are a
 myriad of options, but a very simple one for this project could be:</p>
@@ -606,8 +613,8 @@ It is a list of external packages used in the project. On install with
 pip, Python will make sure that ‘numpy’ is installed if not already
 available. If it can’t, the installation will fail.</p>
 </div>
-<div class="section level3">
-<h3 id="requirements-txt">requirements.txt<a class="anchor" aria-label="anchor" href="#requirements-txt"></a></h3>
+<div class="section level4">
+<h4 id="requirements-txt">requirements.txt<a class="anchor" aria-label="anchor" href="#requirements-txt"></a></h4>
 <p>This is just a text file where you can put any dependencies your
 package needs to work. If necessary, you can constrain some of your
 package dependencies to specific versions, for e.g.:</p>
@@ -631,8 +638,8 @@ the introduction of <code>wheels</code> - Anaconda is not usable or is
 heavily discouraged on many HPC clusters.</p>
 </div>
 </div>
-<div class="section level2">
-<h2 id="uv-lock-and-pylock-toml">uv.lock (and pylock.toml)<a class="anchor" aria-label="anchor" href="#uv-lock-and-pylock-toml"></a></h2>
+<div class="section level3">
+<h3 id="uv-lock-and-pylock-toml">uv.lock (and pylock.toml)<a class="anchor" aria-label="anchor" href="#uv-lock-and-pylock-toml"></a></h3>
 <p>A lock file allows to reproduce the installation of a Python project,
 with the exact same sets of dependencies, from system to system.</p>
 <p>For this project I’m using <code>uv.lock</code>, the one provided by
@@ -652,14 +659,14 @@ releasing it. This is beyond the scope of this introduction, but you can
 find more on the <a href="https://docs.astral.sh/uv/guides/projects/" class="external-link">uv
 project guide</a>.</p>
 </div>
-<div class="section level2">
-<h2 id="readme-md">README.md<a class="anchor" aria-label="anchor" href="#readme-md"></a></h2>
+<div class="section level3">
+<h3 id="readme-md">README.md<a class="anchor" aria-label="anchor" href="#readme-md"></a></h3>
 <p>This file offers general information about the project. It is the one
 displayed by GitHub at the end of the main code page. It is possible to
 add badges with the status of the CI tests.</p>
 </div>
-<div class="section level2">
-<h2 id="other-files">Other files<a class="anchor" aria-label="anchor" href="#other-files"></a></h2>
+<div class="section level3">
+<h3 id="other-files">Other files<a class="anchor" aria-label="anchor" href="#other-files"></a></h3>
 <ul><li>
 <code>DEVELOPMENT.md</code>: development instructions for
 collaborators and your future self.</li>
@@ -686,8 +693,7 @@ pre-commit configuration file, see the <a href="#id_%20Adding%20Pre-commit%20che
 <code>.pylintrc</code>: configuration file of pylint, a Python
 linter</p>
 </div>
-</div>
-<div class="section level1">
+</section><div class="section level1">
 <h1 id="adding-pre-commit-checks">Adding Pre-commit checks<a class="anchor" aria-label="anchor" href="#adding-pre-commit-checks"></a></h1>
 <p>It is possible to run some checks before each commit command, taking
 advantage of the hooks mechanism in Git. A pre-commit will guarantee
@@ -811,11 +817,10 @@ repos. This will suggest updates to your
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">pre-commit</span> run <span class="at">--all-files</span></span></code></pre>
 </div>
-</div>
-<div class="section level1">
-<h1 id="licensing-compliance">Licensing compliance<a class="anchor" aria-label="anchor" href="#licensing-compliance"></a></h1>
+<div class="section level2">
+<h2 id="licensing-compliance">2. Licensing compliance<a class="anchor" aria-label="anchor" href="#licensing-compliance"></a></h2>
 <p>The Recipe Units Converter is released under the Apache 2.0 license
-and license compliance is handled with the <a href="http://reuse.software/" class="external-link">REUSE</a> tool. REUSE is installed as
+and license compliance is handled with the <a href="https://reuse.software/" class="external-link">REUSE</a> tool. REUSE is installed as
 development dependency or you can install it manually
 (<code>pip install reuse</code>). All files should have a license
 notice:</p>
@@ -843,8 +848,8 @@ support pyproject.toml yet.</p></li>
 <code>reuse download LCENSEID</code>. If you are contributing to a
 project, please contact project management if this is needed.</p></li>
 </ul></div>
-<div class="section level1">
-<h1 id="github-ci-unit-tests-and-linting">GitHub CI: unit tests and linting<a class="anchor" aria-label="anchor" href="#github-ci-unit-tests-and-linting"></a></h1>
+<div class="section level2">
+<h2 id="github-ci-unit-tests-and-linting">3. GitHub CI: unit tests and linting<a class="anchor" aria-label="anchor" href="#github-ci-unit-tests-and-linting"></a></h2>
 <p>First, we’ll introduce a new file. In the
 <code>src/unitconverter</code> subdirectory, in a file called
 <code>test_functions.py</code> we can write any tests of methods in
@@ -929,6 +934,7 @@ issues before they become a problem - this is continuous integration
 just Python - and are pretty much universally used by professional
 software developers</li>
 </ul></div>
+</div>
 </div>
 </div>
 </div>

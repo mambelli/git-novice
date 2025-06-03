@@ -331,12 +331,25 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         16. Collaborating - Branching and Pull Requests
         </span>
-      
+      </button>
     </div><!--/div.accordion-header-->
+
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+      <div class="accordion-body">
+        <ul><li><a href="#forking-a-repository">Forking a repository</a></li>
+<li><a href="#creating-a-new-branch-with-changes">Creating a new branch with changes</a></li>
+<li><a href="#pushing-a-new-branch">Pushing a new branch</a></li>
+<li><a href="#add-branch-protection-rules-requirements-in-the-base-repository">Add branch protection rules (requirements) in the base
+repository</a></li>
+<li><a href="#pull-requests-merging-your-contributions">Pull Requests (Merging your contributions)</a></li>
+<li><a href="#keeping-up-with-upstream-changes">Keeping up with upstream changes</a></li>
+        </ul></div><!--/div.accordion-body-->
+    </div><!--/div.accordion-collapse-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -472,11 +485,8 @@ window on GitHub will correspond to the “Owner”.</p>
 </div>
 </div>
 </div>
-<div class="section level1">
-<h1 id="forking-a-repository-l1">Forking a repository L1<a class="anchor" aria-label="anchor" href="#forking-a-repository-l1"></a></h1>
-<div class="section level2">
-<h2 id="forking-a-repository-l2">Forking a repository L2<a class="anchor" aria-label="anchor" href="#forking-a-repository-l2"></a></h2>
-<p>Frequently you may not have write access to a Git repository or we
+<section><h2 class="section-heading" id="forking-a-repository">Forking a repository<a class="anchor" aria-label="anchor" href="#forking-a-repository"></a></h2>
+<hr class="half-width"><p>Frequently you may not have write access to a Git repository or we
 may want to have more control on how the changes get merged in that
 repository. So we create our own personal copy of the repository, linked
 to the original one. This is called a ‘forked’ repository, frequently
@@ -502,12 +512,12 @@ personal copy (assuming you use CLI and HTTPS):</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">$</span> git clone git@github.com:tontag/recipes.git ~/Desktop/recipes</span></code></pre>
 </div>
-<div id="practicing-by-yourself-1" class="callout">
+<div id="if-you-are-practicing-by-yourself" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="practicing-by-yourself-1" class="callout-inner">
-<h3 class="callout-title">Practicing By Yourself</h3>
+<div id="if-you-are-practicing-by-yourself" class="callout-inner">
+<h3 class="callout-title">If You Are Practicing By Yourself</h3>
 <div class="callout-content">
 <p>If you’re working through this lesson on your own, you should have
 created the new GitHub organization as explained in the callout above,
@@ -517,11 +527,8 @@ terminal.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section level1">
-<h1 id="creating-a-new-branch-with-changes">Creating a new branch with changes<a class="anchor" aria-label="anchor" href="#creating-a-new-branch-with-changes"></a></h1>
-<p>To create a new branch, run the following command in your
+</section><section><h2 class="section-heading" id="creating-a-new-branch-with-changes">Creating a new branch with changes<a class="anchor" aria-label="anchor" href="#creating-a-new-branch-with-changes"></a></h2>
+<hr class="half-width"><p>To create a new branch, run the following command in your
 repository:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -603,10 +610,8 @@ there:</p>
 </h3>
 <pre class="output" tabindex="0"><code>ls: tagliatelle.md: No such file or directory</code></pre>
 </div>
-</div>
-<div class="section level1">
-<h1 id="pushing-a-new-branch">Pushing a new branch<a class="anchor" aria-label="anchor" href="#pushing-a-new-branch"></a></h1>
-<p>We’ll switch back to our branch again:</p>
+</section><section><h2 class="section-heading" id="pushing-a-new-branch">Pushing a new branch<a class="anchor" aria-label="anchor" href="#pushing-a-new-branch"></a></h2>
+<hr class="half-width"><p>We’ll switch back to our branch again:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -673,23 +678,20 @@ currently working on - if you make changes on “main”, then switch to the
 changes will not be uploaded to GitHub.</p>
 <p>On GitHub, you can switch branches by using the little drop down
 menu: <img src="../fig/github-switch-branch.png" alt="Switch branch" class="figure"></p>
-</div>
-<div class="section level1">
-<h1 id="add-branch-protection-rules-requirements-in-the-base-repository">Add branch protection rules (requirements) in the base
-repository<a class="anchor" aria-label="anchor" href="#add-branch-protection-rules-requirements-in-the-base-repository"></a></h1>
-<p>To avoid undesired changes in the base repository usually
-administrators will add restrictions, e.g.: - block regular merges (not
-using a PR) - require at least one review before a Pull Request can be
-merged - require status check to pass before merging</p>
-<p>To set these requirements go to the original repository, in the
-“Settings” tab (the last on the right) select “Branches” from the menu
-on the left and under “Branch protection rules” you can press “Add rule”
-to add a new one or you can edit existing ones. Either ways you can
-click on the restrictions you’d like to enable.</p>
-</div>
-<div class="section level1">
-<h1 id="pull-merge-requests">Pull (Merge) Requests<a class="anchor" aria-label="anchor" href="#pull-merge-requests"></a></h1>
-<p>Pull requests can be used at this point to put the changes on the
+</section><section><h2 class="section-heading" id="add-branch-protection-rules-requirements-in-the-base-repository">Add branch protection rules (requirements) in the base
+repository<a class="anchor" aria-label="anchor" href="#add-branch-protection-rules-requirements-in-the-base-repository"></a></h2>
+<hr class="half-width"><p>To avoid undesired changes in the base repository usually
+administrators will add restrictions, e.g.: - Block regular merges (not
+using a pull request) - Require at least one review before a Pull
+Request can be merged - Require automated CI tests () to pass before
+merging</p>
+<p>To set these requirements go to the original repository, the
+“Owner”’s one, and in the “Settings” tab (the last on the right) select
+“Branches” from the menu on the left and under “Branch protection rules”
+you can press “Add rule” to add a new one or you can edit existing ones.
+Either ways you can click on the restrictions you’d like to enable.</p>
+</section><section><h2 class="section-heading" id="pull-requests-merging-your-contributions">Pull Requests (Merging your contributions)<a class="anchor" aria-label="anchor" href="#pull-requests-merging-your-contributions"></a></h2>
+<hr class="half-width"><p>Pull requests can be used at this point to put the changes on the
 ‘main’ copy of the repository.</p>
 <p>The easiest way to open a pull request is to use the URL suggested by
 Git, like
@@ -740,10 +742,8 @@ will ask to confirm the merge action.</p>
 branch, in the original repository. You can verify that inspecting the
 files.</p>
 <p>The source branch of the PR can be deleted.</p>
-</div>
-<div class="section level1">
-<h1 id="keeping-up-with-upstream-changes">Keeping up with upstream changes<a class="anchor" aria-label="anchor" href="#keeping-up-with-upstream-changes"></a></h1>
-<p>Assuming that you are working on a project with many other
+</section><section><h2 class="section-heading" id="keeping-up-with-upstream-changes">Keeping up with upstream changes<a class="anchor" aria-label="anchor" href="#keeping-up-with-upstream-changes"></a></h2>
+<hr class="half-width"><p>Assuming that you are working on a project with many other
 collaborators, the main repository will change frequently.</p>
 <p>To keep your fork in sync, GitHub has a “Sync fork” pull-down in the
 status bar before your code (the same one where the contribute pull-down
@@ -774,11 +774,7 @@ conflicts</li>
 </ul></div>
 </div>
 </div>
-</div>
-
-
-
-      </div> <!-- / div.lesson-content -->
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/15-python-project-and-testing.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="../instructor/index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
