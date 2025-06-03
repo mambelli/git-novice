@@ -63,7 +63,7 @@ unitconverter/
 │       └── test_functions.py
 └── uv.lock
 
-# tree -a -I .git -I .ruff_cache -I .pytest_cache -I recipeconverter.egg-info -I dist unitconverter/
+# tree -a -I .git -I .ruff_cache -I .pytest_cache -I recipe_unitconverter.egg-info -I dist -I .mypy_cache -I __pycache__ unitconverter/
 ```
 
 You can see this sample project [here](https://github.com/mambelli/unitconverter) and clone it with (assuming you use CLI and HTTPS):
@@ -162,7 +162,7 @@ This is just a text file where you can put any dependencies your package needs t
 
 ```output
 pytest
-numpy>=2.2.0
+numpy>=2.0.2
 ```
 
 To install all of the dependencies, you can run `pip install -r requirements.txt`. This is well known by most people working with Python. Generally you should try to install things via pip like this, and not via Anaconda (unless you have no choice). This is because Anaconda is less portable:
@@ -211,10 +211,11 @@ Hidden files, visible with `ls -a`:
 # Adding Pre-commit checks
 
 It is possible to run some checks before each commit command, taking advantage of the hooks mechanism in Git.
-A pre-commit will guarantee that committed code always follows the desired standard.
+A pre-commit will guarantee that committed code always follows the desired standard. 
 To start using pre-commit you have to add a pre-commit config file and to install pre-commit.
 
-Add a pre-commit config file named `.pre-commit-config.yaml` with the following content for an initial set of checks:
+Add a pre-commit config file named `.pre-commit-config.yaml` with the following content for an initial set of checks (some lines redacted for clarity, the full version is on the repo).
+This configuration runs some basic file checks and more elaborate linters ([Black](https://github.com/psf/black), [Ruff](https://docs.astral.sh/ruff/), [mypy](https://mypy-lang.org/), [REUSE](https://reuse.software/)):
 
 ```yaml
 # For more information see
@@ -283,12 +284,15 @@ repos:
         # needs to be py3.6 compatible
         args:
           - "--py36-plus"
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.16.0
+    hooks:
+      - id: mypy
   - repo: https://github.com/codespell-project/codespell
     rev: v2.2.4
     hooks:
       - id: codespell
         args: [
-            # codespell   --toml pyproject.toml -S ./build/ci/checkbashisms.pl -S ./unittests/cs.fixture  .
             # Pass skip configuration as command line arguments rather than in the
             # config file because neither cfg nor TOML support splitting this argument
             # across multiple lines.
@@ -360,7 +364,7 @@ The library `pytest` is commonly used for unit tests like this. Pytest looks for
 from .functions import convert_imperial
 
 def test_convert_imperial():
-    assert convert_imperial("34 liters") == "34 liters"
+    assert convert_imperial("34 liters") == "34.0 liters"
     assert convert_imperial("1 lb") == "453.592 grams"
     assert convert_imperial("2 ounces") == "56.699 grams"
 ```

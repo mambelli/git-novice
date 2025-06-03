@@ -107,7 +107,7 @@ Copy that URL from the browser, go into the local `recipes` repository, and run
 one of the following commands. If using GitHub CLI, access tokens, and HTTPS:
 
 ```bash
-$ git remote add origin https://github.com/vlad/planets.git
+$ git remote add origin https://github.com/alflin/recipes.git
 ```
 
  If using SSH:

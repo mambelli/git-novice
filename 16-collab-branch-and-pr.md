@@ -6,24 +6,45 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
+- Fork a repository
 - Create a branch
-- Push the branch to a repository
-- Make a pull request to the repository
+- Push the branch to a repository fork
+- Make a pull request to the original repository
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How can I use version control to collaborate with other people more effectively?
+- How can I use version control to collaborate with other people in a more effective and controlled way?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-Often, we want to work on a set of changes that are more complicated than what was shown in the last lesson, and without affecting other people's work. Think for example, what would happen if I made a change to code that someone else was using, but left it in a broken state. They would probably not be very happy with me! To this effect, we can use a concept called 'branches' to separate works-in-progress from the known 'good' copy of the code. In general, it's considered good practice to create a branch for every piece of work that you do, and to merge these into the 'good' version regularly.
+Often, we want to work on a set of changes that are more complicated than what was shown in the [colleborating episode](08-collab.md), and without affecting other people's work. Think for example, what would happen if I made a change to code that someone else was using, but left it in a broken state. They would probably not be very happy with me! To this effect, we can use a concept called 'branches' to separate works-in-progress from the known 'good' copy of the code. In general, it's considered good practice to create a branch for every piece of work that you do, and to merge these into the 'good' version regularly.
+
+Also for the next step, like in the collaborating episodes, get into pairs.  
+One person will be the "Owner", Alfredo Linguini (alflin) below, and the other
+will be the "Collaborator", Tony Tagliatella (tontag) below.
+The goal is that the Collaborator proposes changes into the Owner's repository.
+You can switch roles at the end, so both persons will play Owner and Collaborator.
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Practicing By Yourself
+
+If you're working through this lesson on your own, you can carry on by opening
+a second terminal window and, on a new browser window, creating a
+[new GitHub organization](https://docs.github.com/en/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch).
+This terminal and browser windows will represent your partner, the "Collaborator",
+working on another computer and using another GitHub account.
+Your original terminal and browser window on GitHub will correspond to the "Owner".
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
+# Forking a repository L1
 
-# Forking a repository
+## Forking a repository L2
 
 Frequently you may not have write access to a Git repository or we may want to have more control on how the changes get merged in that repository.
 So we create our own personal copy of the repository, linked to the original one.
@@ -51,6 +72,17 @@ $ git clone git@github.com:tontag/recipes.git ~/Desktop/recipes
 
 ```
 
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Practicing By Yourself
+
+If you're working through this lesson on your own, you should have 
+created the new GitHub organization as explained in the callout above,
+and you should use that one for the forked repository.
+Then, the clone command should use that forked repository and be in
+the "Collaborator" terminal.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 # Creating a new branch with changes
 
