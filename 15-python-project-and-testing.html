@@ -333,6 +333,9 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#structuring-a-project">1. Structuring a Project</a></li>
+<li><a href="#adding-pre-commit-checks">2. Adding Pre-commit checks</a></li>
+<li><a href="#licensing-compliance">3. Licensing compliance</a></li>
+<li><a href="#github-ci-unit-tests-and-linting">4. GitHub CI: unit tests and linting</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -693,9 +696,8 @@ pre-commit configuration file, see the <a href="#id_%20Adding%20Pre-commit%20che
 <code>.pylintrc</code>: configuration file of pylint, a Python
 linter</p>
 </div>
-</section><div class="section level1">
-<h1 id="adding-pre-commit-checks">Adding Pre-commit checks<a class="anchor" aria-label="anchor" href="#adding-pre-commit-checks"></a></h1>
-<p>It is possible to run some checks before each commit command, taking
+</section><section><h2 class="section-heading" id="adding-pre-commit-checks">2. Adding Pre-commit checks<a class="anchor" aria-label="anchor" href="#adding-pre-commit-checks"></a></h2>
+<hr class="half-width"><p>It is possible to run some checks before each commit command, taking
 advantage of the hooks mechanism in Git. A pre-commit will guarantee
 that committed code always follows the desired standard. To start using
 pre-commit you have to add a pre-commit config file and to install
@@ -817,9 +819,8 @@ repos. This will suggest updates to your
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="ex">pre-commit</span> run <span class="at">--all-files</span></span></code></pre>
 </div>
-<div class="section level2">
-<h2 id="licensing-compliance">2. Licensing compliance<a class="anchor" aria-label="anchor" href="#licensing-compliance"></a></h2>
-<p>The Recipe Units Converter is released under the Apache 2.0 license
+</section><section><h2 class="section-heading" id="licensing-compliance">3. Licensing compliance<a class="anchor" aria-label="anchor" href="#licensing-compliance"></a></h2>
+<hr class="half-width"><p>The Recipe Units Converter is released under the Apache 2.0 license
 and license compliance is handled with the <a href="https://reuse.software/" class="external-link">REUSE</a> tool. REUSE is installed as
 development dependency or you can install it manually
 (<code>pip install reuse</code>). All files should have a license
@@ -847,10 +848,8 @@ support pyproject.toml yet.</p></li>
 <li><p>New licenses can be added to the project using
 <code>reuse download LCENSEID</code>. If you are contributing to a
 project, please contact project management if this is needed.</p></li>
-</ul></div>
-<div class="section level2">
-<h2 id="github-ci-unit-tests-and-linting">3. GitHub CI: unit tests and linting<a class="anchor" aria-label="anchor" href="#github-ci-unit-tests-and-linting"></a></h2>
-<p>First, we’ll introduce a new file. In the
+</ul></section><section><h2 class="section-heading" id="github-ci-unit-tests-and-linting">4. GitHub CI: unit tests and linting<a class="anchor" aria-label="anchor" href="#github-ci-unit-tests-and-linting"></a></h2>
+<hr class="half-width"><p>First, we’ll introduce a new file. In the
 <code>src/unitconverter</code> subdirectory, in a file called
 <code>test_functions.py</code> we can write any tests of methods in
 <code>functions.py</code>. The library <code>pytest</code> is commonly
@@ -936,12 +935,7 @@ software developers</li>
 </ul></div>
 </div>
 </div>
-</div>
-</div>
-
-
-
-      </div> <!-- / div.lesson-content -->
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="14-supplemental-rstudio.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="16-collab-branch-and-pr.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
