@@ -279,6 +279,9 @@ Alternatively, you cn manage both your fork and the upstream repo as remotes in 
 ## Switch Roles and Repeat
 
 Switch roles and repeat the whole process.
+Optionally, do that using the unitconverter repository descibed in
+[Setting up a Python Project](15-python-project-and-testing.md) episode.
+This will allow to test branch conditions depending on workflow execution.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
