@@ -274,6 +274,61 @@ This process is fairly straight forward, especially if you keep your main/master
 
 Alternatively, you cn manage both your fork and the upstream repo as remotes in a local clone and manually pull and rebase as desired. This gives you more control but may be more complex.
 
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Switch Roles and Repeat
+
+Switch roles and repeat the whole process.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Review Upstream Changes
+
+The Owner pushed commits to the repository without giving any information
+to the Collaborator. How can the Collaborator find out what has changed with
+command line? And on GitHub?
+
+:::::::::::::::  solution
+
+## Solution
+
+On the command line, the Collaborator can use `git fetch upstream main`
+to get the remote changes into the local repository, but without merging
+them. Then by running `git diff main upstream/main` the Collaborator
+will see the changes output in the terminal.
+
+On GitHub, the Collaborator can go to the repository and click on
+the little triangle next to the "Sync fork" button to see if there have
+been updates in the upstream repository.
+Clicking on the upstream repository name after "forked from" under the
+repository name will send you to the upstream repository where you can
+check recent commits.
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Comment Changes in GitHub
+
+The Owner has some questions about one line change made by the Collaborator and
+has some suggestions to propose.
+
+With GitHub Pull Requests, it is possible to add general comments in the "Conversation"
+tab of the pull request, and code specific comments on the diff in the "Files changed" tab. 
+Over the line of code to comment, a blue comment icon appears to open a comment window.
+
+The Owner posts her comments and suggestions using the GitHub interface.
+The Owner can approve the changes proposed in the PR or can request code changes.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - `git checkout -b branchname` creates a branch where you can work on a set of changes
