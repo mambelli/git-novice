@@ -208,7 +208,7 @@ Hidden files, visible with `ls -a`:
 - `.pylintrc`: configuration file of pylint, a Python linter
 
 
-# Adding Pre-commit checks
+## 2\. Adding Pre-commit checks
 
 It is possible to run some checks before each commit command, taking advantage of the hooks mechanism in Git.
 A pre-commit will guarantee that committed code always follows the desired standard. 
@@ -331,7 +331,7 @@ pre-commit run --all-files
 ```
 
 
-## 2\. Licensing compliance
+## 3\. Licensing compliance
 
 The Recipe Units Converter is released under the Apache 2.0 license and license compliance is
 handled with the [REUSE](https://reuse.software/) tool.
@@ -355,7 +355,7 @@ REUSE is installed as development dependency or you can install it manually
   contact project management if this is needed.
 
 
-## 3\. GitHub CI: unit tests and linting
+## 4\. GitHub CI: unit tests and linting
 
 First, we'll introduce a new file. In the `src/unitconverter` subdirectory, in a file called `test_functions.py` we can write any tests of methods in `functions.py`. 
 The library `pytest` is commonly used for unit tests like this. Pytest looks for files named `*_test.py` or `test_*.py` and can pick up tests written in the following way:

@@ -42,7 +42,7 @@ Your original terminal and browser window on GitHub will correspond to the "Owne
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-## Forking a repository
+## 1\. Forking a repository
 
 Frequently you may not have write access to a Git repository or we may want to have more control on how the changes get merged in that repository.
 So we create our own personal copy of the repository, linked to the original one.
@@ -82,7 +82,7 @@ the "Collaborator" terminal.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Creating a new branch with changes
+## 2\. Creating a new branch with changes
 
 To create a new branch, run the following command in your repository:
  
@@ -145,7 +145,7 @@ ls tagliatelle.md
 ls: tagliatelle.md: No such file or directory
 ```
 
-## Pushing a new branch
+## 3\. Pushing a new branch
 
 We'll switch back to our branch again:
 ```bash
@@ -201,6 +201,8 @@ New changes can be added and then pushed to the branch just by running the stand
 On GitHub, you can switch branches by using the little drop down menu:
 ![](fig/github-switch-branch.png){alt='Switch branch'}
 
+:::::::::::::::::::::::::::::::::::::::::  callout
+
 ## Add branch protection rules (requirements) in the base repository
 
 To avoid undesired changes in the base repository usually administrators will add restrictions, e.g.:
@@ -210,7 +212,9 @@ To avoid undesired changes in the base repository usually administrators will ad
 
 To set these requirements go to the original repository, the "Owner"'s one, and in the "Settings" tab (the last on the right) select "Branches" from the menu on the left and under "Branch protection rules" you can press "Add rule" to add a new one or you can edit existing ones. Either ways you can click on the restrictions you'd like to enable.
 
-## Pull Requests (Merging your contributions)
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## 4\. Pull Requests (Merging your contributions)
 
 Pull requests can be used at this point to put the changes on the 'main' copy of the repository.
 
@@ -257,7 +261,7 @@ You can verify that inspecting the files.
 
 The source branch of the PR can be deleted.
 
-## Keeping up with upstream changes
+## 5\. Keeping up with upstream changes
 
 Assuming that you are working on a project with many other collaborators, the main repository
 will change frequently.
