@@ -19,7 +19,7 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-# Structuring a Project
+## 1\. Structuring a Project
 
 Alfredo would like to exchange recipes with his friends in Europe. They measure everything in grams and do not understand imperial measures.
 So he decided to start a Python project to automate the conversion for the ingredients' quantities.
@@ -66,13 +66,13 @@ unitconverter/
 # tree -a -I .git -I .ruff_cache -I .pytest_cache -I recipe_unitconverter.egg-info -I dist -I .mypy_cache -I __pycache__ unitconverter/
 ```
 
-You can see this sample project [here](https://github.com/mambelli/unitconverter) and clone it with (assuming you use CLI and HTTPS):
+You can see [this sample project](https://github.com/mambelli/unitconverter) and clone it with (assuming you use CLI and HTTPS):
 
 ```bash
 $ git clone https://github.com/mambelli/unitconverter.git
 ```
 
- If using SSH:
+If using SSH, you can clone it with:
 
 ```bash
 $ git clone git@github.com:mambelli/unitconverter.git
@@ -81,11 +81,11 @@ $ git clone git@github.com:mambelli/unitconverter.git
 
 We'll talk of these folders/files one at a time:
 
-## src/
+### src/
 
 The source tree where all the Python files reside.
 
-## unitconverter/
+### unitconverter/
 
 Inside the project source tree we normally have a folder which matches the name of the Python package. This is done so that from the src directory, the code within the package can be imported with:
 
@@ -97,11 +97,11 @@ You can see this for e.g. in the source repository of the [NumPy library](https:
 
 Within this folder, we can store code files (e.g. functions.py) and further subdirectories (sub-packages). These will then be importable too.
 
-### functions.py
+#### functions.py
 
 This is a module, just a standard Python file with classes and functions in it. You can have as many of these as you like, but generally people organise them around what the code is doing. So for e.g if you have a few methods that deal with I/O, you might create a file called `io.py` and put all of those methods there. Organising your code across multiple files like this is a very good idea - it makes it easier to find things.
 
-### `__init__.py`
+#### `__init__.py`
 
 The `__init__.py` file is effectively as set of instructions that get run when you import a Python package. So with a blank `__init__.py`, nothing happens if you run `import unitconverter` in a Python session. If you want to use methods from the functions.py file. What is common is to import certain methods into the top level of the module, for e.g.:
 
@@ -117,7 +117,7 @@ Then, in a Python session, you would be able to do the following:
 85.0485 gr
 ```
 
-## pyproject.toml
+### pyproject.toml
 
 A ['pyproject.toml'](<https://packaging.python.org/en/latest/specifications/pyproject-toml/) file acts as a configuration file for packaging-related and other tools as specified in
 [PEP 518](https://peps.python.org/pep-0518/) and [PEP 621](https://peps.python.org/pep-0621/).
@@ -131,13 +131,13 @@ If [project] is missing, the build backend will provide all the information, at 
 
 The `[tool]` table (and `[tool.NAME]` sub-tables) is where any other tool related to your Python project can have users specify configuration data, e.g. the black formatting tool would store its configuration in [tool.black].
 
-## Legacy specifications of packages and requirements
+### Legacy specifications of packages and requirements
 
 It may be convenient to add legacy project specifications. 
 They contain redundant information, already in 'pyproject.toml'.
 But other peoples using your project may not be familiar with 'pyproject.toml' or older versions of Python may not support all its features. 
 
-### setup.py
+#### setup.py
 
 A setup.py file is just a list of instructions for Python that tell it how to install your package, and what it's made up of. There are a myriad of options, but a very simple one for this project could be:
 
@@ -156,7 +156,7 @@ setup(
 
 Notice that there is a section called `install_requires`. It is a list of external packages used in the project. On install with pip, Python will make sure that 'numpy' is installed if not already available. If it can't, the installation will fail.
 
-### requirements.txt
+#### requirements.txt
 
 This is just a text file where you can put any dependencies your package needs to work. If necessary, you can constrain some of your package dependencies to specific versions, for e.g.:
 
@@ -171,7 +171,7 @@ To install all of the dependencies, you can run `pip install -r requirements.txt
 - Was introduced mainly for distributing compiled dependencies. This is now well handled by pip with the introduction of `wheels`
 - Anaconda is not usable or is heavily discouraged on many HPC clusters.
 
-## uv.lock (and pylock.toml)
+### uv.lock (and pylock.toml)
 
 A lock file allows to reproduce the installation of a Python project, with the exact same sets of dependencies, from system to system.
 
@@ -188,12 +188,12 @@ uv is a very nice tool to manage all your project needs: from initializing the p
 This is beyond the scope of this introduction, but you can find more on the [uv project guide](https://docs.astral.sh/uv/guides/projects/).
 
 
-## README.md
+### README.md
 
 This file offers general information about the project. It is the one displayed by GitHub at the end of the main code page.
 It is possible to add badges with the status of the CI tests.
 
-## Other files
+### Other files
 
 - `DEVELOPMENT.md`: development instructions for collaborators and your future self.
 - `LICENSE.txt` (and `REUSE.toml`, `.reuse` and `LICENSES`): it's the common place for your project's license, seen also in the [licensing episode](11-licensing.md), very important when making your code public.
@@ -331,10 +331,10 @@ pre-commit run --all-files
 ```
 
 
-# Licensing compliance
+## 2\. Licensing compliance
 
 The Recipe Units Converter is released under the Apache 2.0 license and license compliance is
-handled with the [REUSE](http://reuse.software/) tool.
+handled with the [REUSE](https://reuse.software/) tool.
 REUSE is installed as development dependency or you can install it manually
 (`pip install reuse`). All files should have a license notice:
 
@@ -355,7 +355,7 @@ REUSE is installed as development dependency or you can install it manually
   contact project management if this is needed.
 
 
-# GitHub CI: unit tests and linting
+## 3\. GitHub CI: unit tests and linting
 
 First, we'll introduce a new file. In the `src/unitconverter` subdirectory, in a file called `test_functions.py` we can write any tests of methods in `functions.py`. 
 The library `pytest` is commonly used for unit tests like this. Pytest looks for files named `*_test.py` or `test_*.py` and can pick up tests written in the following way:
