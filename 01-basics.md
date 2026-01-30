@@ -57,8 +57,8 @@ A version control system is a tool that keeps track of these changes for us,
 effectively creating different versions of our files. It allows us to decide
 which changes will be made to the next version (each record of these changes is
 called a [commit](../learners/reference.md#commit)), and keeps useful metadata
-about them. The complete history of commits for a particular project and their
-metadata make up a [repository](../learners/reference.md#repository).
+about them, such as who made the change. The complete history of commits for a 
+particular project and their metadata make up a [repository](../learners/reference.md#repository).
 Repositories can be kept in sync across different computers, facilitating
 collaboration among different people.
 
@@ -75,6 +75,14 @@ More modern systems, such as [Git](https://en.wikipedia.org/wiki/Git) and [Mercu
 are *distributed*, meaning that they do not need a centralized server to host the repository.
 These modern systems also include powerful merging tools that make it possible for multiple authors to work on
 the same files concurrently.
+
+Git was created by Linus Torvalds in 2005 
+as an alternative to BitKeeper, one of the first distributed version control
+systems, to track changes in the Linux kernel.
+Torvalds provided several explanations of the name, of varying degrees of
+politeness, which are enumerated in the 
+[project's README](https://github.com/git/git/blob/master/README.md?plain=1#L55),
+including "Global Information Tacker" for when "you're in a good mood".
 
 For those interested, The Carpentries has a [Version Control with Mercurial](https://swcarpentry.github.io/hg-novice/) lesson (2013-2018), which provides additional context and historical perspective.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
