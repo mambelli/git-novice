@@ -400,7 +400,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Setting Up Git</h1>
-        <p>Last updated on 2025-01-25 |
+        <p>Last updated on 2026-01-30 |
 
         <a href="https://github.com/mambelli/git-novice/edit/main/episodes/02-setup.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -626,6 +626,14 @@ configuration with:</p>
 <p>And if necessary, change your configuration using the same commands
 to choose another editor or update your email address. This can be done
 as many times as you want.</p>
+<p>After creating a repository in the next sections you will have both
+global and local configurations. To view all attributes and where they
+are defined you can use:</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--list</span> <span class="at">--show-origin</span> <span class="at">--show-scope</span></span></code></pre>
+</div>
 <div id="proxy" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -636,18 +644,18 @@ as many times as you want.</p>
 <div class="callout-content">
 <p>In some networks you need to use a <a href="https://en.wikipedia.org/wiki/Proxy_server" class="external-link">proxy</a>. If this is
 the case, you may also need to tell Git about the proxy:</p>
-<div class="codewrapper sourceCode" id="cb7">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> http.proxy proxy-url</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> https.proxy proxy-url</span></code></pre>
-</div>
-<p>To disable the proxy, use</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> http.proxy</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> https.proxy</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> http.proxy proxy-url</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> https.proxy proxy-url</span></code></pre>
+</div>
+<p>To disable the proxy, use</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> http.proxy</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> <span class="at">--unset</span> https.proxy</span></code></pre>
 </div>
 </div>
 </div>
@@ -664,21 +672,21 @@ the case, you may also need to tell Git about the proxy:</p>
 <code>git</code> command, you can access the relevant list of options
 typing <code>git &lt;command&gt; -h</code> or access the corresponding
 Git manual by typing <code>git &lt;command&gt; --help</code>, e.g.:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">-h</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--help</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">-h</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--help</span></span></code></pre>
 </div>
 <p>While viewing the manual, remember the <code>:</code> is a prompt
 waiting for commands and you can press <kbd>Q</kbd> to exit the
 manual.</p>
 <p>More generally, you can get the list of available <code>git</code>
 commands and further resources of the Git manual typing:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">$</span> git help</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">$</span> git help</span></code></pre>
 </div>
 </div>
 </div>
@@ -759,8 +767,8 @@ per machine.</li>
   "url": "https://swcarpentry.github.io/git-novice/02-setup.html",
   "identifier": "https://swcarpentry.github.io/git-novice/02-setup.html",
   "dateCreated": "2014-12-04",
-  "dateModified": "2025-01-25",
-  "datePublished": "2026-01-27"
+  "dateModified": "2026-01-30",
+  "datePublished": "2026-01-30"
 }
 
   </script><script>
